@@ -6,6 +6,39 @@
     <script type="text/javascript" src="rock-paper-scissors.js"></script>
 </head>
 <body>
+    <button class="choice">Rock</button>
+    <button class="choice">Paper</button>
+    <button class="choice">Scissors</button>
 
+    <div class="output"></div>
+
+    <script>
+
+        let buttons = document.querySelectorAll(".choice");
+        const div = document.querySelector('div');
+
+        buttons.forEach(function(button) {
+            button.addEventListener("click", function() {
+
+                const output = document.createElement("span");
+                const count = document.createElement("p");
+                const announce = document.createElement("p")
+                announce.id = "announcement";
+
+                div.appendChild(output);
+                div.appendChild(count);
+                div.appendChild(announce);
+
+                document.querySelector('span').textContent = playRound(button.textContent, getComputerChoice());
+
+                document.querySelector('p').textContent = "Player score: " + playerCount + "|\tComputer score: " +
+                    computerCount;
+
+                document.querySelector('#announcement').textContent = playGame();
+
+            });
+        });
+
+    </script>
 </body>
 </html>

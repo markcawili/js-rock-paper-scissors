@@ -1,5 +1,6 @@
 let playerCount = 0;
 let computerCount = 0;
+let i = 0;
 
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * 3);
@@ -36,22 +37,26 @@ function playRound(playerSelection, computerSelection) {
 
 }
 
-function playGame() {
-    let i = 0;
-    while (i < 5) {
-        let player = prompt("What's your choice?");
-        console.log(playRound(player, getComputerChoice()));
-        i++;
-    }
+function reset() {
+    computerCount = 0;
+    playerCount = 0;
+    i = 0;
+}
 
-    if (computerCount > playerCount) {
-        return "Computer wins the 5 rounds!";
-    } else if (playerCount > computerCount) {
-        return "Player wins the 5 rounds!";
-    } else {
-        return "It's a tie!";
+function playGame() {
+
+    i++;
+
+    if (i === 5) {
+        if (computerCount > playerCount) {
+            reset();
+            return "Computer wins the 5 rounds!";
+        } else if (playerCount > computerCount) {
+            reset();
+            return "Player wins the 5 rounds!";
+        } else {
+            return "It's a tie!";
+        }
     }
 
 }
-
-console.log(playGame());
